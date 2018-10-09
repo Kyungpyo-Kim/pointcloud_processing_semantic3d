@@ -8,14 +8,19 @@ Point cloud processing for preparing learning dataset of "Semantic3d"
 ## Build
 
 ```bash
-mkdir build && cd build
-cmake ..
-make
+.../$ mkdir build && cd build
+.../build$ cmake ..
+.../build$ make
 ```
 
 ## Run
 ```bash
-./processing_sem3d [log_file_name] [data_file_path] [label_file_path]
-#./processing_sem3d log_181009.txt /data/semantic3d.txt /data/semantic3d.labels
+.../build$ ./processing_sem3d [log_file_name] [data_file_path] [label_file_path]
+#./processing_sem3d log_181009.txt ../data/sem8_labels_training/bildstein_station1_xyz_intensity_rgb.txt ../data/sem8_labels_training/bildstein_station1_xyz_intensity_rgb.labels
 
+```
+
+## Automated bash
+```bash
+.../build$ ../auto_clustering.sh
 ```

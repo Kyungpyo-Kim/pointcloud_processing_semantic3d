@@ -214,6 +214,19 @@ int main (int argc, char** argv)
         std::getline(f_data, line_data);
         std::getline(f_label, line_label);
 
+        if(f_data.eof()) 
+        {
+            f_log << "\n\n  f_data.eof  \n\n" << std::endl;
+            std::cerr << "\n\n  f_data.eof  \n\n" << std::endl;
+            break;
+        }
+        if (line_label == std::string("")) 
+        {
+            f_log << "line_label == std::string("")" << std::endl;
+            std::cerr << "line_label == std::string("")" << std::endl;
+            break;
+        }
+
         std::istringstream iss(line_data);
         std::vector<std::string> words_in_line((std::istream_iterator<std::string>(iss)), std::istream_iterator<std::string>());
 
@@ -269,7 +282,8 @@ int main (int argc, char** argv)
 
         pcl::PointCloud<pcl::PointXYZ>::Ptr cloud_filtered = point_cloud_ptr_array.at(i_pc_array);
 
-        std::cout << "INFO: starting with the CPU version [" << label_to_string_sem3d.at(i_pc_array) << "]" << std::endl;
+        f_log << "  - Starting with the CPU version [" << label_to_string_sem3d.at(i_pc_array) << "]" << std::endl;
+        std::cout << "  - Starting with the CPU version [" << label_to_string_sem3d.at(i_pc_array) << "]" << std::endl;
 
         // Creating the KdTree object for the search method of the extraction
         pcl::search::KdTree<pcl::PointXYZ>::Ptr tree (new pcl::search::KdTree<pcl::PointXYZ>);
