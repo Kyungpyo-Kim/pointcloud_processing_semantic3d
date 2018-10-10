@@ -3,7 +3,10 @@ Point cloud processing for preparing learning dataset of "Semantic3d"
 
 ## Dependencies
 * Ubuntu16.04
-* PCL1.8
+* PCL1.8 (c++)
+* python-pcl [link](https://github.com/strawlab/python-pcl) 
+* vtk (python)
+* vtkplotter [link](https://github.com/marcomusy/vtkplotter)
 
 ## Build
 
@@ -23,4 +26,9 @@ Point cloud processing for preparing learning dataset of "Semantic3d"
 ## Automated bash
 ```bash
 .../build$ ../auto_clustering.sh
+```
+
+## Visualization
+```bash
+.../build$ python ../scripts/pcd_visualization.py -r .
 ```

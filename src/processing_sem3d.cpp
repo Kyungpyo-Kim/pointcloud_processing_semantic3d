@@ -280,6 +280,8 @@ int main (int argc, char** argv)
 
         if (point_cloud_ptr_array.at(i_pc_array)->size() == 0) continue;
 
+        if (i_pc_array == 0) continue;
+
         pcl::PointCloud<pcl::PointXYZ>::Ptr cloud_filtered = point_cloud_ptr_array.at(i_pc_array);
 
         f_log << "  - Starting with the CPU version [" << label_to_string_sem3d.at(i_pc_array) << "]" << std::endl;
