@@ -40,15 +40,15 @@ for root, dirs, files in os.walk(root_path):
 
 
 """ Convert *.pcd files to *.png using visualization tools """
+vp = vtkplotter.Plotter()
 for pcd_file in pcd_file_list:
     pcd = pcl.load(pcd_file)
     np_cloud = np.asarray(pcd)
     
-    vp = vtkplotter.Plotter()
     vp.points(np_cloud.tolist())
     vp.render()
+    
     vp.screenshot(pcd_file.split('.')[0] + ".png")
-    vp.interactor.TerminateApp()
-    vp.interactor.GetRenderWindow().Finalize()
-    vp.interactor.TerminateApp()
-    del vp.renderWin, vp.interactor, vp
+    
+    vp.clear()
+    
