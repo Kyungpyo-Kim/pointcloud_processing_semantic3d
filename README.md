@@ -7,6 +7,7 @@ Point cloud processing for preparing learning dataset of "Semantic3d"
 * python-pcl [link](https://github.com/strawlab/python-pcl) 
 * vtk (python)
 * vtkplotter [link](https://github.com/marcomusy/vtkplotter)
+* h5py (python)
 
 ## Build
 

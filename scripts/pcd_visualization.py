@@ -36,7 +36,7 @@ for root, dirs, files in os.walk(root_path):
         if file.split('.')[-1] == 'pcd':
             filepath = os.path.join(rootpath, file)
             pcd_file_list.append(filepath)
-            print filepath
+            # print filepath
 
 
 """ Convert *.pcd files to *.png using visualization tools """

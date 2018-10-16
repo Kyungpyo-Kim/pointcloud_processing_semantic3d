@@ -281,11 +281,28 @@ int main (int argc, char** argv)
         if (point_cloud_ptr_array.at(i_pc_array)->size() == 0) continue;
 
         if (i_pc_array == 0) continue;
+        if (i_pc_array == 1) continue;
+        if (i_pc_array == 2) continue;
+        if (i_pc_array == 6) continue;
+        if (i_pc_array == 7) continue;
 
-        pcl::PointCloud<pcl::PointXYZ>::Ptr cloud_filtered = point_cloud_ptr_array.at(i_pc_array);
+        pcl::PointCloud<pcl::PointXYZ>::Ptr cloud_filtered(new pcl::PointCloud<pcl::PointXYZ>); 
 
+        if ( point_cloud_ptr_array.at(i_pc_array)->size() > 1000000 )
+        {
+            pcl::copyPointCloud(*point_cloud_ptr_array.at(i_pc_array), *cloud_filtered);
+            cloud_filtered->erase(cloud_filtered->begin() + 1000000, cloud_filtered->end());
+        }
+        else
+        {
+            pcl::copyPointCloud(*point_cloud_ptr_array.at(i_pc_array), *cloud_filtered);
+        }
+            
         f_log << "  - Starting with the CPU version [" << label_to_string_sem3d.at(i_pc_array) << "]" << std::endl;
         std::cout << "  - Starting with the CPU version [" << label_to_string_sem3d.at(i_pc_array) << "]" << std::endl;
+
+        f_log << "  - Point number: " << cloud_filtered->size() << std::endl;
+        std::cout << "  - Point number: " << cloud_filtered->size() << std::endl;
 
         // Creating the KdTree object for the search method of the extraction
         pcl::search::KdTree<pcl::PointXYZ>::Ptr tree (new pcl::search::KdTree<pcl::PointXYZ>);
@@ -327,7 +344,6 @@ int main (int argc, char** argv)
     }
 
     std::cout << "End clustering" << std::endl;
-
 
     f_log.close();
     f_data.close();
